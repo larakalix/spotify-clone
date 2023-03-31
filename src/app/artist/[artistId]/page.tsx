@@ -10,7 +10,7 @@ type Props = {
 };
 
 export default function Artist({ params: { artistId } }: Props) {
-    const { artist } = useArtist({
+    const { artist, chooseTrack } = useArtist({
         artistId,
     });
 
@@ -20,7 +20,7 @@ export default function Artist({ params: { artistId } }: Props) {
         <HydrateWrapper>
             <PlayerWrapper>
                 <ArtistHeader artist={artist} />
-                <ArtistDetails artist={artist} />
+                <ArtistDetails artist={artist} chooseTrack={chooseTrack} />
             </PlayerWrapper>
         </HydrateWrapper>
     );
