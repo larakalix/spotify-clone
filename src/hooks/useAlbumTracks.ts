@@ -11,11 +11,10 @@ export const useAlbumTracks = ({ albumId }: Props) => {
     const { auth } = useAuthStore((state) => state);
     const [album, setAlbum] = useState<any>(null);
 
-    const { setState } = useSpotifyStore((state) => state);
+    const { saveActiveTrack } = useSpotifyStore((state) => state);
 
     const chooseTrack = (track: any) => {
-        console.log("track", track);
-        setState({ playingTrack: track });
+        saveActiveTrack(track);
     };
 
     useEffect(() => {

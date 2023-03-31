@@ -13,8 +13,6 @@ export const Player = () => {
     const { accessToken } = auth;
     const trackUri = state.playingTrack;
 
-    console.log("player__trackUri", state);
-
     useEffect(() => {
         setPlay(true);
     }, [trackUri]);
