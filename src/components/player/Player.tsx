@@ -20,7 +20,7 @@ export const Player = () => {
     if (!accessToken) return null;
 
     return (
-        <div className="sticky bottom-0 w-[calc(100%-32px)] mb-4 bg-spoty-gray rounded-md p-2">
+        <div className="sticky bottom-2 right-0 left-0 w-full bg-spoty-gray rounded-md mb-2 p-2">
             <SpotifyPlayer
                 token={accessToken}
                 showSaveIcon

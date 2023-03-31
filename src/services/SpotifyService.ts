@@ -1,3 +1,4 @@
+import { SearchResult } from "@/interfaces/search";
 import { useAuthStore } from "@/store/AuthStore";
 import axios from "axios";
 
@@ -119,6 +120,23 @@ export const SpotifyService = () => {
         return data;
     };
 
+    const getArtist = async ({
+        artistId,
+        accessToken,
+    }: {
+        artistId: string;
+        accessToken: string;
+    }) => {
+        const data = await axios.get(`${baseUrl}/artist?artistId=${artistId}`, {
+            headers: {
+                ...options.headers,
+                accessToken,
+            },
+        });
+
+        return data;
+    };
+
     return {
         login,
         refresh,
@@ -127,5 +145,6 @@ export const SpotifyService = () => {
         getNewReleases,
         getSearch,
         getAlbum,
+        getArtist,
     };
 };

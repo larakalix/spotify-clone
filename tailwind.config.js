@@ -16,6 +16,7 @@ module.exports = {
                 "spoty-gray": "#333333",
                 "barely-black": "#121212",
                 "barely-gray": "rgb(255 255 255 / 10%)",
+                "card-black": "#181818",
             },
         },
     },

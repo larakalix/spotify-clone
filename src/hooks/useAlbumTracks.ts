@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { SpotifyService } from "@/services/SpotifyService";
 import { useAuthStore } from "@/store/AuthStore";
@@ -32,6 +33,10 @@ export const useAlbumTracks = ({ albumId }: Props) => {
                 console.log("err", err);
             }
         })();
+
+        return () => {
+            setAlbum(null);
+        };
     }, []);
 
     return { album, chooseTrack };

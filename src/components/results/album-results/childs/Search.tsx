@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { SearchResultDetails } from "@/components/search/SearchResultDetails";
 import { useRouter } from "next/navigation";
-import React from "react";
 
 type Props = {
     album: any;
@@ -20,16 +20,14 @@ export const Search = ({ album }: Props) => {
 
     return (
         <button
-            className="relative rounded-md overflow-hidden"
+            className="relative rounded-md overflow-hidden flex flex-col gap-4 p-4 bg-card-black hover:bg-barely-gray transition-colorsx"
             onClick={handleClick}
         >
-            <img src={image.url} alt="none-img" />
-            <div className="w-ful">
-                <span className="flex w-full">{album.name}</span>
-                <span className="w-full flex text-gray-400 text-sm">
-                    {artist.name}
-                </span>
-            </div>
+            <SearchResultDetails
+                imageUrl={image.url}
+                name={album.name}
+                artistName={artist.name}
+            />
         </button>
     );
 };

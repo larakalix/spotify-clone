@@ -1,5 +1,6 @@
 import { Category } from "@/interfaces/categories";
 import { NewReleases } from "@/interfaces/new_releases";
+import { Albums, Artists, Playlists, Shows } from "@/interfaces/search";
 import { Tracks } from "@/interfaces/track";
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
@@ -15,11 +16,17 @@ type StateProps = {
     newReleases: NewReleases[];
     state: DataProps;
     searchTrackResults: Tracks[];
-    searchAlbumsResults: any[];
+    searchAlbumsResults: Albums[];
+    searchArtistsResults: Artists[];
+    searchPlaylistsResults: Playlists[];
+    searchShowsResults: Shows[];
     setState: (data: DataProps) => void;
     saveActiveTrack: (track: any) => void;
     setTrackSearchResults: (searchTrackResults: Tracks[]) => void;
-    setAlbumsSearchResults: (searchAlbumsResults: any[]) => void;
+    setAlbumsSearchResults: (searchAlbumsResults: Albums[]) => void;
+    setArtistsSearchResults: (searchArtistsResults: Artists[]) => void;
+    setPlaylitsSearchResults: (searchPlaylistsResults: Playlists[]) => void;
+    setShowsSearchResults: (searchShowsResults: Shows[]) => void;
     setCategories: (categories: any[]) => void;
     setNewReleases: (newReleases: any[]) => void;
     cleanState: () => void;
@@ -39,6 +46,9 @@ export const useSpotifyStore = create<StateProps>()(
                 state: initProps,
                 searchTrackResults: [],
                 searchAlbumsResults: [],
+                searchArtistsResults: [],
+                searchPlaylistsResults: [],
+                searchShowsResults: [],
                 newReleases: [],
                 setState: (data: DataProps) =>
                     set((state) => ({ ...state, data })),
@@ -54,8 +64,15 @@ export const useSpotifyStore = create<StateProps>()(
                 },
                 setTrackSearchResults: (searchTrackResults: Tracks[]) =>
                     set({ searchTrackResults }),
-                setAlbumsSearchResults: (searchAlbumsResults: any[]) =>
+                setAlbumsSearchResults: (searchAlbumsResults: Albums[]) =>
                     set({ searchAlbumsResults }),
+                setArtistsSearchResults: (searchArtistsResults: Artists[]) =>
+                    set({ searchArtistsResults }),
+                setPlaylitsSearchResults: (
+                    searchPlaylistsResults: Playlists[]
+                ) => set({ searchPlaylistsResults }),
+                setShowsSearchResults: (searchShowsResults: Shows[]) =>
+                    set({ searchShowsResults }),
                 setCategories: (categories: any[]) => set({ categories }),
                 setNewReleases: (newReleases: any[]) => set({ newReleases }),
                 cleanState: () =>
