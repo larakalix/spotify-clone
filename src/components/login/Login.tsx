@@ -22,10 +22,10 @@ export const Login = () => {
         );
 
     return (
-        <div className="flex flex-col items-center justify-between h-screen py-20 bg-black text-white">
+        <div className="flex flex-col items-center justify-between h-screen py-20 bg-barely-black text-white">
             <h1 className="text-4xl font-bold">Spotify</h1>
             <Link
-                className="flex items-center justify-center bg-green-500 text-white py-4 px-8 rounded-lg"
+                className="flex items-center justify-center bg-green-500 text-white py-4 px-8 rounded-full"
                 href={AUTH_URL}
             >
                 Login with Spotify

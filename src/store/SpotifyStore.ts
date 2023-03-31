@@ -6,7 +6,7 @@ import { devtools, persist } from "zustand/middleware";
 
 type DataProps = {
     search: string;
-    playingTrack: any;
+    playingTrack: string;
     lyrics: string;
 };
 
@@ -14,16 +14,20 @@ type StateProps = {
     categories: Category[];
     newReleases: NewReleases[];
     state: DataProps;
-    searchResults: Tracks[];
+    searchTrackResults: Tracks[];
+    searchAlbumsResults: any[];
     setState: (data: DataProps) => void;
-    setSearchResults: (searchResults: Tracks[]) => void;
+    saveActiveTrack: (track: any) => void;
+    setTrackSearchResults: (searchTrackResults: Tracks[]) => void;
+    setAlbumsSearchResults: (searchAlbumsResults: any[]) => void;
     setCategories: (categories: any[]) => void;
     setNewReleases: (newReleases: any[]) => void;
+    cleanState: () => void;
 };
 
 const initProps: DataProps = {
     search: "",
-    playingTrack: null,
+    playingTrack: "",
     lyrics: "",
 };
 
@@ -33,14 +37,35 @@ export const useSpotifyStore = create<StateProps>()(
             (set, get) => ({
                 categories: [],
                 state: initProps,
-                searchResults: [],
+                searchTrackResults: [],
+                searchAlbumsResults: [],
                 newReleases: [],
                 setState: (data: DataProps) =>
                     set((state) => ({ ...state, data })),
-                setSearchResults: (searchResults: Tracks[]) =>
-                    set({ searchResults }),
+                saveActiveTrack: (track: any) => {
+                    const playingTrack = track.uri;
+                    set((state) => ({
+                        ...state,
+                        state: {
+                            ...state.state,
+                            playingTrack,
+                        },
+                    }));
+                },
+                setTrackSearchResults: (searchTrackResults: Tracks[]) =>
+                    set({ searchTrackResults }),
+                setAlbumsSearchResults: (searchAlbumsResults: any[]) =>
+                    set({ searchAlbumsResults }),
                 setCategories: (categories: any[]) => set({ categories }),
                 setNewReleases: (newReleases: any[]) => set({ newReleases }),
+                cleanState: () =>
+                    set({
+                        categories: [],
+                        searchTrackResults: [],
+                        searchAlbumsResults: [],
+                        newReleases: [],
+                        state: initProps,
+                    }),
             }),
             {
                 name: "spotify-storage",

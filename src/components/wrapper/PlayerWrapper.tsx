@@ -7,7 +7,9 @@ type Props = {
 export const PlayerWrapper = ({ children }: Props) => {
     return (
         <>
-            <section className="pb-40">{children}</section>
+            <section className="w-full max-w-full md:max-w-5xl pb-40">
+                {children}
+            </section>
 
             <>
                 <Player />

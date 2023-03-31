@@ -8,12 +8,12 @@ type Props = {
 
 export const NewReleasesResults = ({ newReleases }: Props) => {
     return (
-        <>
+        <section className="mb-8">
             <h1 className="w-full mb-4 text-4xl font-bold   ">New Releases</h1>
-            <div className="grid grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-8">
                 {React.Children.toArray(
                     newReleases.map(({ id, name, images, artists }) => (
-                        <div
+                        <article
                             id={id}
                             className="relative rounded-md overflow-hidden"
                         >
@@ -22,10 +22,10 @@ export const NewReleasesResults = ({ newReleases }: Props) => {
                                 name={name}
                                 artists={artists}
                             />
-                        </div>
+                        </article>
                     ))
                 )}
             </div>
-        </>
+        </section>
     );
 };

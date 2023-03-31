@@ -11,7 +11,6 @@ const options = {
 
 export const SpotifyService = () => {
     const login = async (code: string) => {
-        console.log("login_code", code);
         const data = await axios.post(
             `${baseUrl}/login`,
             {
@@ -19,8 +18,6 @@ export const SpotifyService = () => {
             },
             options
         );
-
-        console.log("login_data", data);
 
         return data;
     };
@@ -33,8 +30,6 @@ export const SpotifyService = () => {
             },
             options
         );
-
-        console.log("refresh_data", data);
 
         return data;
     };
@@ -84,11 +79,53 @@ export const SpotifyService = () => {
         return items;
     };
 
+    const getSearch = async ({
+        search,
+        accessToken,
+    }: {
+        search: string;
+        accessToken: string;
+    }) => {
+        const data = await axios.post(
+            `${baseUrl}/search`,
+            {
+                search,
+            },
+            {
+                headers: {
+                    ...options.headers,
+                    accessToken,
+                },
+            }
+        );
+
+        return data;
+    };
+
+    const getAlbum = async ({
+        albumId,
+        accessToken,
+    }: {
+        albumId: string;
+        accessToken: string;
+    }) => {
+        const data = await axios.get(`${baseUrl}/album?albumId=${albumId}`, {
+            headers: {
+                ...options.headers,
+                accessToken,
+            },
+        });
+
+        return data;
+    };
+
     return {
         login,
         refresh,
         getLyrics,
         getCategories,
         getNewReleases,
+        getSearch,
+        getAlbum,
     };
 };

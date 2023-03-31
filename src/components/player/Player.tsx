@@ -5,18 +5,15 @@ import { useSpotifyStore } from "@/store/SpotifyStore";
 import { useEffect, useState } from "react";
 import SpotifyPlayer from "react-spotify-web-playback";
 
-type Props = {
-    accessToken: string;
-    trackUri: string;
-};
-
 export const Player = () => {
     const { auth } = useAuthStore((state) => state);
     const { state } = useSpotifyStore((state) => state);
     const [play, setPlay] = useState(false);
 
     const { accessToken } = auth;
-    const trackUri = state.playingTrack?.uri;
+    const trackUri = state.playingTrack;
+
+    console.log("player__trackUri", state);
 
     useEffect(() => {
         setPlay(true);
@@ -33,11 +30,11 @@ export const Player = () => {
                 play={play}
                 uris={trackUri ? trackUri : []}
                 styles={{
-                    activeColor: "#fff",
-                    bgColor: "#333",
-                    color: "#fff",
-                    loaderColor: "#fff",
-                    sliderColor: "#1cb954",
+                    activeColor: "#ffffff",
+                    bgColor: "#333333",
+                    color: "#ffffff",
+                    loaderColor: "#fffffff",
+                    sliderColor: "#1ed760",
                     trackArtistColor: "#ccc",
                     trackNameColor: "#fff",
                     height: 55,

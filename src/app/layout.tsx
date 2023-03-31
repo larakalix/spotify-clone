@@ -12,7 +12,7 @@ const font = Montserrat({ subsets: ["latin"] });
 export default function RootLayout({ children }: LayoutProps) {
     return (
         <html lang="en" className={font.className}>
-            <body className="bg-black text-white">
+            <body className="bg-barely-black text-white">
                 <main className="relative flex flex-col items-center min-h-screen pt-24 px-4">
                     {children}
                 </main>

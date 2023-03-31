@@ -4,19 +4,22 @@ import { useRouter } from "next/navigation";
 import { Formik } from "formik";
 import { CiSearch } from "react-icons/ci";
 import { useAuthStore } from "@/store/AuthStore";
+import { useSpotifyStore } from "@/store/SpotifyStore";
 
 export const LayoutNav = () => {
     const { logout } = useAuthStore((state) => state);
+    const { cleanState } = useSpotifyStore((state) => state);
     const { push } = useRouter();
 
     const handleLogout = () => {
+        cleanState();
         logout();
         push("/");
     };
 
     return (
         <nav className="w-full absolute top-0 z-10">
-            <ul className="flex items-center justify-between bg-red-400 py-4 px-8">
+            <ul className="flex items-center justify-between bg-black py-4 px-8">
                 <li>
                     <ul className="flex items-center justify-center gap-4">
                         <li>
@@ -43,7 +46,9 @@ export const LayoutNav = () => {
                                 initialValues={{ search: "" }}
                                 onSubmit={({ search }, { setSubmitting }) => {
                                     setTimeout(() => {
-                                        push(`/search/${search.toLowerCase()}`);
+                                        push(
+                                            `/dashboard/search/${search.toLowerCase()}`
+                                        );
                                         setSubmitting(false);
                                     }, 400);
                                 }}
@@ -59,15 +64,14 @@ export const LayoutNav = () => {
                                 }) => (
                                     <form
                                         onSubmit={handleSubmit}
-                                        className="w-full flex flex-wrap rounded-[0.25rem] overflow-hidden bg-gray-200"
+                                        className="w-full flex flex-wrap rounded-[0.25rem] overflow-hidden bg-white"
                                     >
                                         <input
                                             type="text"
                                             name="search"
                                             onChange={handleChange}
                                             onBlur={handleBlur}
-                                            placeholder="ex: Sia, Lydia, etc."
-                                            className="bg-transparent px-4 py-2 flex-1"
+                                            className="bg-transparent px-4 py-2 flex-1 text-barely-black"
                                         />
                                         {errors.search &&
                                             touched.search &&
@@ -80,7 +84,7 @@ export const LayoutNav = () => {
                                         >
                                             <CiSearch className="w-5 h-5" />
                                             <span className="hidden md:block">
-                                                Submit
+                                                Search
                                             </span>
                                         </button>
                                     </form>
