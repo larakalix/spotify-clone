@@ -11,10 +11,10 @@ export async function GET(request: NextRequest) {
     });
 
     try {
-        const { body } = await spotifyApi.getCategories({
+        const { body } = await spotifyApi.getNewReleases({
             country: "US",
-            locale: "en_US",
-            limit: 24,
+            limit: 12,
+            offset: 24,
         });
 
         return NextResponse.json(body);

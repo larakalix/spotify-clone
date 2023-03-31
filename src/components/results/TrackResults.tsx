@@ -7,7 +7,7 @@ type Props = {
     chooseTrack: (track: Tracks) => void;
 };
 
-export const Results = ({ searchResults, lyrics, chooseTrack }: Props) => {
+export const TrackResults = ({ searchResults, lyrics, chooseTrack }: Props) => {
     if (searchResults.length === 0)
         return (
             <div className="h-80 flex items-center justify-center">

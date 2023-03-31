@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
         <>
             <LayoutNav />
 
-            <main className="relative flex flex-col items-center pt-24 px-4">
+            <main className="w-full relative flex flex-col items-center px-4">
                 {children}
             </main>
         </>

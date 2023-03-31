@@ -1,19 +1,21 @@
 "use client";
 
-import { CategoryResults } from "@/components/results/CategoryResults";
+import { CategoryResults, NewReleasesResults } from "@/components/results";
 import { HydrateWrapper, PlayerWrapper } from "@/components/wrapper";
 import useAuth from "@/hooks/useAuth";
 import { useDashboard } from "@/hooks/useDashboard";
 
 export default function Dashboard() {
     const accessToken = useAuth();
-    const { categories } = useDashboard();
+    const { categories, newReleases } = useDashboard();
 
     return (
         <HydrateWrapper>
             <PlayerWrapper>
-                <h1 className="mb-4">Categories</h1>
-                <CategoryResults categories={categories} />
+                <div className="flex items-center justify-center flex-col gap-8">
+                    <NewReleasesResults newReleases={newReleases} />
+                    <CategoryResults categories={categories} />
+                </div>
             </PlayerWrapper>
         </HydrateWrapper>
     );

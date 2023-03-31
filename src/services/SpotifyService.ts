@@ -69,10 +69,26 @@ export const SpotifyService = () => {
         return items;
     };
 
+    const getNewReleases = async ({ accessToken }: { accessToken: string }) => {
+        const {
+            data: {
+                albums: { items },
+            },
+        } = await axios.get(`${baseUrl}/new-releases`, {
+            headers: {
+                ...options.headers,
+                accessToken,
+            },
+        });
+
+        return items;
+    };
+
     return {
         login,
         refresh,
         getLyrics,
         getCategories,
+        getNewReleases,
     };
 };
