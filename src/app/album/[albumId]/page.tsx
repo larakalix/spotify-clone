@@ -19,10 +19,12 @@ export default function Album({ params: { albumId } }: Props) {
         <HydrateWrapper>
             <PlayerWrapper>
                 <AlbumHeader album={album} />
-                <AlbumTracks
-                    tracks={album.tracks.items}
-                    chooseTrack={chooseTrack}
-                />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <AlbumTracks
+                        tracks={album.tracks.items}
+                        chooseTrack={chooseTrack}
+                    />
+                </div>
             </PlayerWrapper>
         </HydrateWrapper>
     );

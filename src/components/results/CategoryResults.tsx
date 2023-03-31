@@ -17,7 +17,11 @@ export const CategoryResults = ({ categories }: Props) => {
                             href={`/dashboard/category/${name.toLowerCase()}`}
                             className="relative rounded-md overflow-hidden"
                         >
-                            <img src={icons[0].url} alt={name} />
+                            <img
+                                className="w-[12.5rem] h-[12.5rem] object-cover"
+                                src={icons[0].url}
+                                alt={name}
+                            />
                             <h6 className="mt-2 font-medium">{name}</h6>
                         </Link>
                     ))

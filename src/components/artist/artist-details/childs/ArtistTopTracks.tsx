@@ -5,9 +5,10 @@ import { ArtistTrack } from "./ArtistTrack";
 
 type Props = {
     topTracks: Tracks[];
+    chooseTrack: (trackId: string) => void;
 };
 
-export const ArtistTopTracks = ({ topTracks }: Props) => {
+export const ArtistTopTracks = ({ topTracks, chooseTrack }: Props) => {
     return (
         <div className="w-full">
             <h1 className="w-full mb-4 text-2xl font-bold capitalize">
@@ -17,7 +18,12 @@ export const ArtistTopTracks = ({ topTracks }: Props) => {
             <div className="flex flex-wrap">
                 <div className="grid grid-cols-2 gap-8">
                     {React.Children.toArray(
-                        topTracks.map((track) => <ArtistTrack track={track} />)
+                        topTracks.map((track) => (
+                            <ArtistTrack
+                                track={track}
+                                chooseTrack={chooseTrack}
+                            />
+                        ))
                     )}
                 </div>
                 <div className="flex-1"></div>

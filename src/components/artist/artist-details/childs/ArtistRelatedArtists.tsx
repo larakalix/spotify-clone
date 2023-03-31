@@ -1,23 +1,25 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { Albums } from "@/interfaces/search";
-import { ArtistAlbum } from "./ArtistAlbum";
+import { ArtistsItem } from "@/interfaces/search";
+import { RelatedArtist } from "./RelatedArtist";
 
 type Props = {
-    albums: Albums[];
+    relatedArtists: ArtistsItem[];
 };
 
-export const ArtistAlbums = ({ albums }: Props) => {
+export const ArtistRelatedArtists = ({ relatedArtists }: Props) => {
     return (
         <div className="w-full">
             <h1 className="w-full mb-4 text-2xl font-bold capitalize">
-                Albums
+                Related Artists
             </h1>
 
             <div className="flex flex-wrap">
                 <div className="grid grid-cols-2 gap-8">
                     {React.Children.toArray(
-                        albums.map((album) => <ArtistAlbum album={album} />)
+                        relatedArtists.map((artist) => (
+                            <RelatedArtist artist={artist} />
+                        ))
                     )}
                 </div>
             </div>

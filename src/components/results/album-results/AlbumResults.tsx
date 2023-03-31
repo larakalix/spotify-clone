@@ -12,7 +12,7 @@ export const AlbumResults = ({ searchAlbumsResults }: Props) => {
                 Albums
             </h1>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {React.Children.toArray(
                     searchAlbumsResults.map((album: any) => (
                         <Search album={album} />

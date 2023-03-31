@@ -23,7 +23,7 @@ export const TrackResults = ({
         <section className="mb-8">
             <h1 className="w-full mb-4 text-2xl font-bold capitalize">Songs</h1>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {searchTrackResults.map((track: any) => (
                     <Search
                         track={track}

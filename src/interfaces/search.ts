@@ -95,6 +95,7 @@ export type Artists = {
     followers: Followers;
     topTracks: Tracks[];
     albums: Albums[];
+    relatedArtists: ArtistsItem[];
 };
 
 export type ArtistsItem = {
@@ -226,6 +227,7 @@ export enum TentacledType {
 }
 
 export type Tracks = {
+    id: string;
     href: string;
     items: TracksItem[];
     limit: number;

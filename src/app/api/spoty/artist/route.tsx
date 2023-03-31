@@ -28,8 +28,10 @@ export async function GET(request: NextRequest) {
                 offset: 0,
             }
         );
+        const { body: relatedArtists } =
+            await spotifyApi.getArtistRelatedArtists(String(artistId));
 
-        return NextResponse.json({ artist, topTracks, albums });
+        return NextResponse.json({ artist, topTracks, albums, relatedArtists });
     } catch (err: any) {
         console.log("err", err);
         notFound();

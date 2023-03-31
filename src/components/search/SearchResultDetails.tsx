@@ -9,7 +9,11 @@ export const SearchResultDetails = ({ name, artistName, imageUrl }: Props) => {
     return (
         <>
             <div className="rounded-md overflow-hidden">
-                <img src={imageUrl} alt="none-img" />
+                <img
+                    className="w-[12.5rem] h-[12.5rem] object-cover"
+                    src={imageUrl}
+                    alt="none-img"
+                />
             </div>
             <div className="w-full truncate">
                 <span className="flex w-full text-start">{name}</span>

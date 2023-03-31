@@ -9,7 +9,7 @@ type Props = {
 
 export const AlbumTracks = ({ tracks, chooseTrack }: Props) => {
     return (
-        <ul className="flex flex-col items-start gap-4 mt-12">
+        <ul className="flex flex-col items-start gap-4 mt-12 rounded-md p-4 bg-barely-gray">
             <li className="w-full flex items-center justify-between border-b border-barely-gray text-slate-400 pb-4">
                 <span className="flex items-center gap-2">
                     <span>#</span>

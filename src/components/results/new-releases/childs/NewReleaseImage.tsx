@@ -7,5 +7,11 @@ export const NewReleaseImage = ({ name, images }: Props) => {
     const image: Image =
         images.find((image) => image.width === 300) ?? images[0];
 
-    return <img src={image.url} alt={name} />;
+    return (
+        <img
+            className="w-[12.5rem] h-[12.5rem] object-cover"
+            src={image.url}
+            alt={name}
+        />
+    );
 };

@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 
 type Props = {
@@ -13,7 +14,6 @@ export const AlbumHeader = ({ album }: Props) => {
         album?.images.find((image: any) => image.width === 64) ||
         album?.images[0];
     const artist = album?.artists[0];
-
     const isExplicit = album?.explicit;
 
     return (
@@ -22,22 +22,25 @@ export const AlbumHeader = ({ album }: Props) => {
                 <div className="rounded-sm overflow-hidden">
                     <img src={image.url} alt={album.name} />
                 </div>
-                <div className="flex-1 pt-8">
-                    <span className="flex text-gray-400 text-sm">
-                        {album.release_date}
-                    </span>
-                    <h1 className="flex justify-between items-start w-full mb-4 text-4xl font-bold capitalize">
-                        <span className="flex flex-col">
-                            <span className="text-sm">Album</span>
-                            {album.name}
+                <div className="flex-1 py-8 flex flex-col justify-between">
+                    <div>
+                        {" "}
+                        <span className="flex text-gray-400 text-sm">
+                            {album.release_date}
                         </span>
-
-                        {!isExplicit && (
-                            <span className="flex text-spoty-green text-sm border border-spoty-green rounded-full py-2 px-8">
-                                Explicit
+                        <h1 className="flex justify-between items-start w-full mb-4 text-4xl font-bold capitalize">
+                            <span className="flex flex-col">
+                                <span className="text-sm">Album</span>
+                                {album.name}
                             </span>
-                        )}
-                    </h1>
+
+                            {!isExplicit && (
+                                <span className="flex text-spoty-green text-sm border border-spoty-green rounded-full py-2 px-8">
+                                    Explicit
+                                </span>
+                            )}
+                        </h1>
+                    </div>
                     <div className="flex items-center gap-4">
                         <div className="rounded-full overflow-hidden">
                             <img
@@ -46,9 +49,12 @@ export const AlbumHeader = ({ album }: Props) => {
                                 alt={artist.name}
                             />
                         </div>
-                        <span className="flex  w-full text-sm font-bold capitalize">
+                        <Link
+                            href={`artist/${artist.id}`}
+                            className="flex  w-full text-sm font-bold capitalize"
+                        >
                             {artist.name}
-                        </span>
+                        </Link>
                     </div>
                 </div>
             </div>

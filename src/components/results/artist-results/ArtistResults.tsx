@@ -13,7 +13,7 @@ export const ArtistResults = ({ searchArtistsResults }: Props) => {
                 Artists
             </h1>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
                 {React.Children.toArray(
                     searchArtistsResults.map((artist: Artists) => (
                         <Search artist={artist} />

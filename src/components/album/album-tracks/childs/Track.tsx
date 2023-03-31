@@ -15,7 +15,9 @@ export const Track = ({ track, chooseTrack }: Props) => {
                 onClick={() => chooseTrack(track)}
             >
                 <span className="flex items-center gap-2">
-                    <span>{track.track_number}</span>
+                    <span className="opacity-50 text-xs">
+                        {track.track_number}
+                    </span>
                     <span>{track.name}</span>
                 </span>
                 <span className="flex items-center">{time}</span>

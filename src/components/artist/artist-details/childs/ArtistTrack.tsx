@@ -3,9 +3,10 @@ import { Tracks } from "@/interfaces/search";
 
 type Props = {
     track: Tracks;
+    chooseTrack: (trackId: string) => void;
 };
 
-export const ArtistTrack = ({ track }: Props) => {
+export const ArtistTrack = ({ track, chooseTrack }: Props) => {
     console.clear();
     console.log("ArtistTrack__component", track);
 
@@ -15,12 +16,15 @@ export const ArtistTrack = ({ track }: Props) => {
     const artist = track.artists[0];
 
     return (
-        <div className="relative rounded-md overflow-hidden flex flex-col gap-4 p-4 bg-card-black hover:bg-barely-gray transition-colors">
+        <button
+            className="relative rounded-md overflow-hidden flex flex-col gap-4 p-4 bg-card-black hover:bg-barely-gray transition-colors"
+            onClick={() => chooseTrack(track.id)}
+        >
             <SearchResultDetails
                 imageUrl={image?.url}
                 name={track.name}
                 artistName={artist?.name!}
             />
-        </div>
+        </button>
     );
 };
