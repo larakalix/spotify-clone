@@ -13,14 +13,24 @@ export async function POST(request: NextRequest) {
     });
 
     try {
-        const { body: tracks } = await spotifyApi.searchTracks(search, {
-            limit: 48,
-        });
-        const { body: albums } = await spotifyApi.searchAlbums(search, {
-            limit: 48,
-        });
+        const {
+            body: { albums, artists, tracks, playlists, shows, episodes },
+        } = await spotifyApi.search(
+            search,
+            ["album", "artist", "playlist", "track", "show", "episode"],
+            {
+                limit: 48,
+            }
+        );
 
-        return NextResponse.json({ tracks, albums });
+        return NextResponse.json({
+            albums,
+            artists,
+            tracks,
+            playlists,
+            shows,
+            episodes,
+        });
     } catch (err: any) {
         console.log("err", err);
         notFound();

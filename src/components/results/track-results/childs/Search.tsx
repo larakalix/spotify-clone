@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { Tracks } from "@/interfaces/track";
+import { SearchResultDetails } from "@/components/search/SearchResultDetails";
 
 type Props = {
     track: any;
@@ -19,16 +19,14 @@ export const Search = ({ track, chooseTrack }: Props) => {
 
     return (
         <button
-            className="relative rounded-md overflow-hidden"
+            className="relative rounded-md overflow-hidden flex flex-col gap-4 p-4 bg-card-black hover:bg-barely-gray transition-colors"
             onClick={handlePlay}
         >
-            <img src={image.url} alt="none-img" />
-            <div className="w-ful">
-                <span className="flex w-full">{track.name}</span>
-                <span className="w-full flex text-gray-400 text-sm">
-                    {artist.name}
-                </span>
-            </div>
+            <SearchResultDetails
+                imageUrl={image.url}
+                name={track.name}
+                artistName={artist.name}
+            />
         </button>
     );
 };

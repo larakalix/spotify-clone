@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/store/AuthStore";
+import Image from "next/image";
 
 export const Login = () => {
     const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${process.env.NEXT_SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${process.env.NEXT_SPOTIFY_REDIRECT_URI}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state`;
@@ -22,8 +23,15 @@ export const Login = () => {
         );
 
     return (
-        <div className="flex flex-col items-center justify-between h-screen py-20 bg-barely-black text-white">
-            <h1 className="text-4xl font-bold">Spotify</h1>
+        <div className="relative flex flex-col items-center justify-between h-screen bg-barely-black text-white">
+            <div>
+                <Image
+                    src="logo-spotify.svg"
+                    alt="Logo"
+                    width={255}
+                    height={72}
+                />
+            </div>
             <Link
                 className="flex items-center justify-center bg-green-500 text-white py-4 px-8 rounded-full"
                 href={AUTH_URL}
