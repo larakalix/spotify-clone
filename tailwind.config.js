@@ -10,7 +10,12 @@ module.exports = {
         "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                "spoty-green": "#1ed760",
+                "spoty-gray": "#333333",
+            },
+        },
     },
     plugins: [],
 };
